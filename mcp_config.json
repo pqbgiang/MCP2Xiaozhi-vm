@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "bibooks": {
+      "type": "streamablehttp",
+      "url": "https://bibooks.org/mcp"
+    }
+  }
+}

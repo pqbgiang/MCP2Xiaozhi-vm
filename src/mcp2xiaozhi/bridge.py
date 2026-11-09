@@ -18,7 +18,8 @@ import contextlib
 import random
 from collections.abc import AsyncIterator
 from typing import TYPE_CHECKING, Any
-
+from pydantic import TypeAdapter
+JSONRPC_ADAPTER = TypeAdapter(JSONRPCMessage)
 import anyio
 from mcp.shared.message import SessionMessage
 from mcp.types import (
@@ -182,7 +183,7 @@ class McpBridge:
                     continue
                 logger.debug("[%s] ws >> mcp: %s", self.name, _truncate(raw))
                 try:
-                    message = JSONRPCMessage.model_validate_json(raw)
+                    message = JSONRPC_ADAPTER.validate_json(raw)
                 except Exception as exc:
                     self.metrics.malformed_frames += 1
                     logger.warning(
