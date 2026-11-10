@@ -19,6 +19,7 @@ import random
 from collections.abc import AsyncIterator
 from typing import TYPE_CHECKING, Any
 from pydantic import TypeAdapter
+from mcp.types import JSONRPCMessage
 JSONRPC_ADAPTER = TypeAdapter(JSONRPCMessage)
 import anyio
 from mcp.shared.message import SessionMessage
