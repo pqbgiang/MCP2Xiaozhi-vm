@@ -19,8 +19,6 @@ import random
 from collections.abc import AsyncIterator
 from typing import TYPE_CHECKING, Any
 from pydantic import TypeAdapter
-from mcp.types import JSONRPCMessage
-JSONRPC_ADAPTER = TypeAdapter(JSONRPCMessage)
 import anyio
 from mcp.shared.message import SessionMessage
 from mcp.types import (
@@ -37,6 +35,8 @@ from .metrics import BridgeMetrics
 from .tool_filter import ToolFilter
 from .transports import McpTransport, create_transport
 from .ws import XiaozhiWsClient
+
+JSONRPC_ADAPTER = TypeAdapter(JSONRPCMessage)
 
 if TYPE_CHECKING:
     from .config import ServerConfig
